@@ -38,7 +38,7 @@ NB. Index: 0    1    2    3     4     5     6     7     8      9      10     11
 </pre>
 So, the node named "C:" is the root as indicated by the _1 corresponding to it.  The next two nodes, "n0" and "n1", have as their parents the root's index 0.  Since "n0" is at index 1, its child nodes "n00" and "n01" correspond to the 1s in "trb", and so on for the rest.
 
-We can use the routines found at https://code.jsoftware.com/wiki/Essays/Tree_Display to display the structure of this tree:
+Using the routines found at https://code.jsoftware.com/wiki/Essays/Tree_Display, we can display the structure of this tree:
 <pre>
    EW=: {: BOXC=: 11{.16}.a.      NB. Line-drawing characters             
    tree (}.trb{nmsb),.}.nmsb                                  
@@ -53,7 +53,6 @@ We can use the routines found at https://code.jsoftware.com/wiki/Essays/Tree_Dis
 +----------------------------+                                  
 </pre>
 ## Examples of Using "Prune" and "Graft" to Re-arrange the Nodes of a Tree
-
 To convert initial tree to the following, first split off the "n0" branch:
 <pre>
    'trb0 nms0 trb1 nms1'=. ;0 1 pruneB &.><(nmsb i. <'n0');trb;<nmsb
