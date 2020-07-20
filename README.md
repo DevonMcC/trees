@@ -18,30 +18,28 @@ The "tree" routine to display this can be found here: https://code.jsoftware.com
 
 Here is a slightly more complex example representing a directory tree rooted at "C:" with the nodes (sub-directories)
 named to indicate their place in the hierarchy.
-
-C: 
-|__n0         
-|   |_n00    
-|   |_n01
-|__n1         
-    |__n10     
-    |   |__n100     
-    |__n11     
-    |   |__n110     
-    |   |__n111     
-    |   |__n112     
-    |__n12     
-
+<pre>
+   tree (}.trb{nmsb),.}.nmsb
++----------------------------+
+|             ┌─ n00         |
+|      ┌─ n0 ─┴─ n01         |
+|      │      ┌─ n10 ─── n100|
+|─ C: ─┤      │       ┌─ n110|
+|      └─ n1 ─┼─ n11 ─┼─ n111|
+|             │       └─ n112|
+|             └─ n12         |
++----------------------------+
+</pre>
 To understand the representation of this tree - "trb" below - we line it up here with both the indexes of each item and with names of the corresponding nodes:
-
+<pre>
 NB. Index: 0    1    2    3     4     5     6     7     8      9      10     11
    nmsb=. 'C:';'n0';'n1';'n00';'n01';'n10';'n11';'n12';'n100';'n110';'n111';'n112'
    trb=.  _1    0   0     1     1     2     2     2     5      6      6      6
-
+</pre>
 So, the node named "C:" is the root as indicated by the _1 corresponding to it.  The next two nodes, "n0" and "n1", have as their parents the root's index 0.  Since "n0" is at index 1, its child nodes "n00" and "n01" correspond to the 1s in "trb", and so on for the rest.
 
 We can use the routines found at https://code.jsoftware.com/wiki/Essays/Tree_Display to display the structure of this tree:
-
+<pre>
    EW=: {: BOXC=: 11{.16}.a.      NB. Line-drawing characters             
    tree (}.trb{nmsb),.}.nmsb                                  
 +----------------------------+                                  
@@ -53,11 +51,11 @@ We can use the routines found at https://code.jsoftware.com/wiki/Essays/Tree_Dis
 |             │       └─ n112|                                  
 |             └─ n12         |                                  
 +----------------------------+                                  
-
+</pre>
 ## Examples of Using "Prune" and "Graft" to Re-arrange the Nodes of a Tree
 
 To convert initial tree to the following, first split off the "n0" branch:
-
+<pre>
    'trb0 nms0 trb1 nms1'=. ;0 1 pruneB &.><(nmsb i. <'n0');trb;<nmsb
    trb0                       NB. Tree without pruned branch
 _1 0 1 1 1 2 3 3 3
@@ -82,3 +80,4 @@ _1 0 0
 |             │       └─ n112               |
 |             └─ n12                        |
 +-------------------------------------------+
+</pre>
