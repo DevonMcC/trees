@@ -6,14 +6,14 @@ Documentation on these routines: https://code.jsoftware.com/wiki/User:Devon_McCo
 The "parent-index" form to represent a tree is simply an integer vector where each item is the index of its parent but the root is indicated by _1.
 
 For example, here is a simple tree represented by the tree structure "tr0".  The "nms0" vector is an arbitrary list of names for each node in the tree.
-
+<pre>
    tr0=. _1 0 0 1 2 [ nms0=. 'Root';'Node0';'Node1';'Node00';'Node10'
    tree (}.tr0{nms0),.}.nms0
 +---------------------------+
 |        ┌─ Node0 ─── Node00|
 |─ Root ─┴─ Node1 ─── Node10|
 +---------------------------+
-
+</pre>
 The "tree" routine to display this can be found here: https://code.jsoftware.com/wiki/Essays/Tree_Display .
 
 Here is a slightly more complex example representing a directory tree rooted at "C:" with the nodes (sub-directories)
